@@ -1,0 +1,6 @@
+input[type=text]:not(.browser-default):focus:not([readonly]),
+input[type=email]:not(.browser-default):focus:not([readonly]),
+input[type=password]:not(.browser-default):focus:not([readonly]),
+textarea.materialize-text-area:focus:not([readonly]){
+    border-color: greenyellow;
+}
