@@ -7,5 +7,9 @@ const initialState = {
     ]
 }
 export default (state=initialState, action) => {
+    switch (action.type){
+        case 'CREATE_PROJECT':
+            console.log('project created oo', action.project);
+    }
     return state;
 }
