@@ -6,10 +6,24 @@ import "./index.css";
 import rootReducer from "./store/reducers/rootReducer";
 import { Provider } from "react-redux";
 import thunk from 'redux-thunk';
+import { createStore, applyMiddleware, compose } from "redux";
+import { reduxFirestore, getFirestore } from 'redux-firestore';
+import { reactReduxFirebase, getFirebase } from 'react-redux-firebase';
+import firebase from './config/fbConfig';
 
-import { createStore, applyMiddleware } from "redux";
-
-const store = createStore(rootReducer, applyMiddleware(thunk));
+const store = createStore(rootReducer, compose(
+    applyMiddleware(
+      thunk.withExtraArgument(
+        {
+          getFirebase,
+          getFirestore
+        }
+        )
+        ),
+    reduxFirestore(firebase),
+    reactReduxFirebase(firebase),
+  )
+  );
 
 ReactDOM.render(
   <Provider store={store}>

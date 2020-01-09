@@ -10,6 +10,12 @@ export default (state=initialState, action) => {
     switch (action.type){
         case 'CREATE_PROJECT':
             console.log('project created oo', action.project);
+            return state;
+        case 'CREATE_PROJECT_ERROR':
+            console.log('project created oo', action.error);
+            return state;
+        default:
+            return state;
     }
-    return state;
+    // return state;
 }
