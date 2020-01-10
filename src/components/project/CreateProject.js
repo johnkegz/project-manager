@@ -10,7 +10,8 @@ export class CreateProject extends Component {
 
     handleSubmit = (e) =>{
         e.preventDefault();
-        this.props.createProject(this.state)
+        this.props.createProject(this.state);
+        this.props.history.push('/');
     }
     handleOnChange = (e) => {
         this.setState({
