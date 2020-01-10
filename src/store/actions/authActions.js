@@ -1,7 +1,5 @@
 export const signIn = (credentials) => {
-    console.log("here +++", credentials);
-    return (dispatch, getState, { getFirestore, getFirebase })=>{
-        console.log("here +++");
+    return (dispatch, getState, {getFirebase })=>{
         const fireBase = getFirebase();
         fireBase.auth().signInWithEmailAndPassword(
             credentials.email,
@@ -11,5 +9,16 @@ export const signIn = (credentials) => {
         }).catch(()=>{
             dispatch({type: "LOGIN_ERROR"})
         });
+    }
+}
+
+export const signOut = () => {
+    return (dispatch, getState, {getFirebase}) => {
+        const fireBase = getFirebase();
+
+        fireBase.auth().signOut().then(() => {
+            dispatch({type: 'SIGNOUT_SUCCESS'});
+        })
+
     }
 }
