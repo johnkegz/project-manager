@@ -6,6 +6,7 @@
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
+    "eslint": "^6.8.0",
     "firebase": "^7.6.1",
     "moment": "^2.24.0",
     "react": "^16.12.0",
@@ -20,6 +21,7 @@
     "serialize-javascript": "^2.1.1"
   },
   "scripts": {
+    "lint": "eslint.js",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
@@ -39,5 +41,6 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "devDependencies": {}
 }

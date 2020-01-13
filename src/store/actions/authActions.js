@@ -15,11 +15,9 @@ export const signIn = (credentials) => {
 export const signOut = () => {
     return (dispatch, getState, {getFirebase}) => {
         const fireBase = getFirebase();
-
         fireBase.auth().signOut().then(() => {
             dispatch({type: "SIGNOUT_SUCCESS"});
         })
-
     }
 }
 
