@@ -3,9 +3,6 @@ const functions = require("firebase-functions");
 const admin = require("firebase-admin");
 admin.initializeApp(functions.config().firebase);
 
-// // Create and Deploy Your First Cloud Functions
-// // https://firebase.google.com/docs/functions/write-firebase-functions
-//
 exports.helloWorld = functions.https.onRequest((request, response) => {
   response.send("yoo");
 });
@@ -33,7 +30,6 @@ exports.projectCreated = functions.firestore
   exports.userJoined = functions.auth.user().onCreate(user => {
       return admin.firestore().collection("users").doc(user.uid).get().then(doc => {
           const newUser = doc.data();
-          console.log("newUser.firstName ++++", newUser.firstName);
           const notification = {
               content: "Joined the party",
               user: `${newUser.firstName} ${newUser.lastName}`,
