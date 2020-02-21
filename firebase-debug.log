@@ -1,0 +1,52 @@
+[debug] [2020-01-13T12:18:17.586Z] ----------------------------------------------------------------------
+[debug] [2020-01-13T12:18:17.588Z] Command:       /usr/local/bin/node /usr/local/bin/firebase deploy
+[debug] [2020-01-13T12:18:17.588Z] CLI Version:   7.11.0
+[debug] [2020-01-13T12:18:17.588Z] Platform:      darwin
+[debug] [2020-01-13T12:18:17.588Z] Node Version:  v10.13.0
+[debug] [2020-01-13T12:18:17.589Z] Time:          Mon Jan 13 2020 15:18:17 GMT+0300 (East Africa Time)
+[debug] [2020-01-13T12:18:17.589Z] ----------------------------------------------------------------------
+[debug] [2020-01-13T12:18:17.589Z] 
+[debug] [2020-01-13T12:18:17.597Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2020-01-13T12:18:17.597Z] > authorizing via signed-in user
+[debug] [2020-01-13T12:18:17.597Z] [iam] checking project project-manager-8ab9d for permissions ["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2020-01-13T12:18:17.599Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/project-manager-8ab9d:testIamPermissions  
+
+[debug] [2020-01-13T12:18:19.332Z] <<< HTTP RESPONSE 200
+[debug] [2020-01-13T12:18:19.334Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/projects/project-manager-8ab9d  
+ 
+[debug] [2020-01-13T12:18:19.946Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Deploying to 'project-manager-8ab9d'...
+[info] 
+[info] i  deploying functions, hosting
+[debug] [2020-01-13T12:18:21.230Z] > [functions] package.json contents: {
+  "name": "functions",
+  "description": "Cloud Functions for Firebase",
+  "scripts": {
+    "serve": "firebase serve --only functions",
+    "shell": "firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "engines": {
+    "node": "8"
+  },
+  "dependencies": {
+    "firebase-admin": "^8.6.0",
+    "firebase-functions": "^3.3.0"
+  },
+  "devDependencies": {
+    "firebase-functions-test": "^0.1.6"
+  },
+  "private": true
+}
+[info] i  functions: ensuring necessary APIs are enabled...
+[debug] [2020-01-13T12:18:21.231Z] >>> HTTP REQUEST GET https://serviceusage.googleapis.com/v1/projects/project-manager-8ab9d/services/cloudfunctions.googleapis.com  
+ 
+[debug] [2020-01-13T12:18:21.231Z] >>> HTTP REQUEST GET https://serviceusage.googleapis.com/v1/projects/project-manager-8ab9d/services/runtimeconfig.googleapis.com  
+ 
+[debug] [2020-01-13T12:18:21.741Z] Error: getaddrinfo ENOTFOUND serviceusage.googleapis.com serviceusage.googleapis.com:443
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (dns.js:57:26)
+[error] 
+[error] Error: Server Error. getaddrinfo ENOTFOUND serviceusage.googleapis.com serviceusage.googleapis.com:443
