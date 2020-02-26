@@ -3,7 +3,6 @@ import moment from 'moment';
 
 export default class Notification extends Component {
     render() {
-        console.log("notifications props +++", this.props)
         const { notifications } =this.props;
         return (
             <div className="section">

@@ -11,6 +11,14 @@ import { reduxFirestore, getFirestore } from 'redux-firestore';
 import { reactReduxFirebase, getFirebase } from 'react-redux-firebase';
 import firebase from './config/fbConfig';
 
+import ApolloClient from 'apollo-boost';
+import { ApolloProvider } from '@apollo/react-hooks';
+
+
+const client = new ApolloClient({
+  uri: 'http://localhost:8081/graphql',
+});
+
 const store = createStore(rootReducer, compose(
     applyMiddleware(
       thunk.withExtraArgument(
@@ -27,9 +35,11 @@ const store = createStore(rootReducer, compose(
 
 store.firebaseAuthIsReady.then(()=>{
   ReactDOM.render(
+    <ApolloProvider client={client}>
     <Provider store={store}>
       <App />
-    </Provider>,
+    </Provider>
+    </ApolloProvider>,
     document.getElementById("root")
   );
 })
