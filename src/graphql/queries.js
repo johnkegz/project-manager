@@ -1,8 +1,16 @@
 import gql from "graphql-tag";
 
-export const getProjects = gql`
-  query projects{
-        id
-        description
+export const GET_PROJECTS = gql`
+  {
+    projects {
+      id
+      title
+      description
+      createdAt
+      user {
+        firstName
+        lastName
+      }
+    }
   }
 `;
