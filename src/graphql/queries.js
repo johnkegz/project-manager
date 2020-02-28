@@ -14,3 +14,17 @@ export const GET_PROJECTS = gql`
     }
   }
 `;
+
+export const GET_NOTIFICATIONS = gql`
+  {
+    notifications {
+      id
+      title
+      user {
+        firstName
+        lastName
+      }
+      createdAt
+    }
+  }
+`;

@@ -10,13 +10,14 @@ export default class Notification extends Component {
                     <div className="card-content">
                         <span className="card-title">Notifications</span>
                         <ul className="notifications">
-                            { notifications && notifications.map(item => {
+                            { notifications && notifications.notifications.map(item => {
+                                let time = moment(parseInt(item.createdAt)).calendar()
                                 return (
                                     <li key={item.id}>
-                                        <span className="pink-text">{item.user} </span>
-                                        <span>{item.content}</span>
+                                        <span className="pink-text">{item.user.firstName} {item.user.lastName}</span>
+                                        <span> {item.title}</span>
                                         <div className="grey-text note-date">
-                                            {moment(item.time.toDate()).fromNow()}
+                                            {time}
                                         </div>
                                     </li>
                                 )

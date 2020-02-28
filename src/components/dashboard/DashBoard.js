@@ -5,32 +5,31 @@ import { connect } from "react-redux";
 import { firestoreConnect } from "react-redux-firebase";
 import { compose } from "redux";
 import { Redirect } from "react-router-dom";
-import { GET_PROJECTS } from "../../graphql/queries";
-import { useQuery } from "@apollo/react-hooks";
+import { GET_PROJECTS, GET_NOTIFICATIONS } from "../../graphql/queries";
+import { useQuery, useApolloClient } from "@apollo/react-hooks";
 
-export function DashBoard(){
-  // render() {
-    // const { projects, auth, notifications } = this.props;
-    const { loading, error, data } = useQuery(GET_PROJECTS);
-    
-    // if (!auth.uid) return <Redirect to='/signin' />;
+export function DashBoard(props){
+    const { loading, error, data: projects } = useQuery(GET_PROJECTS);
+    const { loading: notificationsLoading, error: notificationsError, data: notifications } = useQuery(GET_NOTIFICATIONS);
+    const client = useApolloClient()
     if (loading) return "Loading...";
     if (error) return `Error! ${error.message}`;
-    console.log("data >>", data)
+ 
+    const dat = client.readQuery({ query: GET_PROJECTS });
+    console.log("data>>>>", dat);
+
     return (
       <div className='dashboard container'>
         <div className='row'>
           <div className='col s12 m6'>
-            <ProjectList projects={data} />
-            {/* <ProjectList projects={projects} /> */}
+            <ProjectList projects={projects} />
           </div>
           <div className='col s12 m5 offset-m1'>
-            {/* <Notification notifications={notifications} /> */}
+            <Notification notifications={notifications} />
           </div>
         </div>
       </div>
     );
-  // }
 }
 
 const mapStateToProps = state => {

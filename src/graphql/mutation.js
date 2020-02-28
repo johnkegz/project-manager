@@ -7,9 +7,26 @@ export const ADD_PROJECT = gql`
     $userId: ID!
   ) {
     addProject(title: $title, description: $description, userId: $userId) {
+      id
       title
       description
-      userId
+      createdAt
+      user {
+        firstName
+        lastName
+      }
     }
   }
 `;
+
+export const ADD_NOTIFICATION = gql`
+  mutation addNotification(
+    $title: String
+    $userId: String
+  ) {
+    addNotification(title: $title, userId: $userId) {
+      title
+    }
+  }
+`;
+

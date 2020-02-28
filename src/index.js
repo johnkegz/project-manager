@@ -17,6 +17,7 @@ import { ApolloProvider } from '@apollo/react-hooks';
 
 const client = new ApolloClient({
   uri: 'http://localhost:8081/graphql',
+  // cache: new InMemoryCache()
 });
 
 const store = createStore(rootReducer, compose(
