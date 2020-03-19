@@ -2,7 +2,7 @@ import React, { Component, useEffect, useContext, useState } from 'react'
 import { connect } from 'react-redux';
 import { createProject } from '../../store/actions/projectActions';
 // import {graphql} from "react-apollo";
-import { useMutation, useQuery, useApolloClient } from '@apollo/react-hooks';
+import { useMutation } from '@apollo/react-hooks';
 import { ADD_PROJECT, ADD_NOTIFICATION } from '../../graphql/mutation';
 import { GET_PROJECTS } from "../../graphql/queries";
 
@@ -12,18 +12,13 @@ export default function CreateProject(props){
     const [description, setDescription] = useState('')
     const [addProject] = useMutation(ADD_PROJECT)
     const [addNotification] = useMutation(ADD_NOTIFICATION)
-    const client = useApolloClient()
     return (
         <div className="container">
            <form onSubmit={e=>{
                try{
                e.preventDefault();
                 addProject({ variables: { userId: 1, title: title, description: description } });
-                // result.then(res => client.writeData({data: res.data.addProject}));
                 addNotification({ variables: {title: "created project", userId: "1"} });
-                // const dat = client.readQuery({ query: GET_PROJECTS });
-                // console.log("data>>>>", dat);
-                // props.history.push('/dashboard');
                 window.location.replace('/dashboard')
                }catch(e){
                    console.log("e++++", e)

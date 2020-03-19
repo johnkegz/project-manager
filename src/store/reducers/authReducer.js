@@ -20,9 +20,10 @@ export default (state=initialState, action) => {
             return state
 
         case 'SIGNUP_SUCCESS':
-            console.log("signUP success");
+            console.log("signUP successXXXXXXXXX", action.newUser);
             return {
                 ...state,
+                newUser: action.newUser,
                 authError: null
             }
 

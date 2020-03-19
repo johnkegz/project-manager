@@ -17,6 +17,7 @@ export function DashBoard(props){
  
     const dat = client.readQuery({ query: GET_PROJECTS });
     console.log("data>>>>", dat);
+    console.log("props>>>>", props);
 
     return (
       <div className='dashboard container'>
@@ -37,7 +38,8 @@ const mapStateToProps = state => {
     // projects: state.projects.projects
     projects: state.firestore.ordered.projects,
     auth: state.firebase.auth,
-    notifications: state.firestore.ordered.notifications
+    notifications: state.firestore.ordered.notifications,
+    users: state.firestore.ordered.users
   };
 };
 
